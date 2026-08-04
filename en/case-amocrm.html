@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kommo (formerly amoCRM) — Konstantin Chirkov</title>
+<meta name="description" content="An activation framework for an enterprise CRM with 1M+ MAU: the Adoption Matrix, a Getting started page instead of legacy modals, and +4% on trial → subscription conversion." />
+<link rel="icon" href="../assets/favicon.png" sizes="128x128" />
+<link rel="apple-touch-icon" href="../assets/favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="alternate" hreflang="ru" href="../case-amocrm.html" />
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <a href="index.html" class="brandmark">
+      <span class="brandmark__ava"><img src="../assets/images/home/avatar-photo.webp" alt="" /></span>
+      <span class="brandmark__name">Konstantin Chirkov</span>
+    </a>
+    <nav class="pillnav" aria-label="Contacts">
+      <div class="pillnav__contacts" id="contacts">
+        <a class="pill" href="mailto:kostya.ch.09@gmail.com">Email</a>
+        <a class="pill" href="https://telegram.me/designer_chirkov" target="_blank" rel="noopener">Telegram</a>
+        <a class="pill" href="https://wa.me/conychirk" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="pill" href="https://www.linkedin.com/in/designer-chirkov/" target="_blank" rel="noopener">Linkedin</a>
+      </div>
+      <a class="pill pill--lang" href="../case-amocrm.html" hreflang="ru" aria-label="Переключить на русский">EN</a>
+      <a class="pill pill--dark pill--cv" href="https://drive.google.com/file/d/1YVO4VuzA729BqMWlsvIMxuTHHAgMY8DL/view" target="_blank" rel="noopener"><span>Download CV</span></a>
+      <button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="contacts">
+        <img class="burger__open" src="../assets/icons/menu.svg" width="24" height="24" alt="" />
+        <img class="burger__close" src="../assets/icons/close.svg" width="24" height="24" alt="" />
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <article class="case case--kommo">
+    <p class="case__lead">Kommo <span class="muted">formerly amoCRM</span> — an international CRM for sales and customer communication through messengers, with 1M+ MAU</p>
+
+    <dl class="case__meta">
+      <div>
+        <dt>My role</dt>
+        <dd>Product Designer</dd>
+      </div>
+      <div class="case__meta-pair">
+        <div>
+          <dt>Year</dt>
+          <dd>2025–2026</dd>
+        </div>
+        <div>
+          <dt>Reading time</dt>
+          <dd>4 minutes</dd>
+        </div>
+      </div>
+    </dl>
+
+    <div class="case__brief">
+      <div>
+        <h2>The task</h2>
+        <p>Get new users to the point where they actually see the product's value.</p>
+      </div>
+      <div>
+        <h2>Results</h2>
+        <p><b>+4%</b> on trial → subscription conversion, plus a reusable activation framework for the whole product.</p>
+      </div>
+    </div>
+
+    <section class="case__section">
+      <h2>Activation: from trial to paid subscription</h2>
+
+      <h3>The problem</h3>
+      <div class="case__text">
+        <p>The team came with a hypothesis: users do not understand the product's value and leave before they pay. The interviews said something else — most people got started just fine. They connected messengers, set up the CRM and ran deals.</p>
+        <p>The problem showed up later. Many never used the additional features — not because they were difficult, but because they did not know the features existed or could not see how to start.</p>
+        <p>Inside the company there was a reason for that: every team promoted its own features in its own way, and there was no shared approach to activation. Capabilities surfaced in different places in the interface, so a user saw a pile of unrelated hints — and usually ignored them.</p>
+        <p>It was made harder by the fact that the user journey is not linear: it depends on goals, on which integrations are connected, on the state of the account and on where the person entered the product. A single onboarding that would fit everyone simply did not exist.</p>
+      </div>
+
+      <h3>The insight</h3>
+      <div class="case__text">
+        <p>Going through the interviews and the user scenarios produced two statements that turned the task around:</p>
+        <ol>
+          <li>People were not leaving because the product was hard, but because they did not know what was there. The value was within reach — they just never got to it.</li>
+          <li>But promoting a feature head-on does not work either: a promo means nothing until someone has hit the problem that feature solves. What works is not the fact that “we have this”, but the moment — a user is typing the same message by hand for the tenth time, and right there an offer to turn it into a template lands on a real need.</li>
+        </ol>
+        <p>That was the turning point: I stopped designing onboarding for a specific feature and started describing a model of adoption, where every stage of getting to know a feature has its own moment and its own mechanic.</p>
+      </div>
+
+      <h3>Adoption Matrix</h3>
+      <div class="case__text">
+        <p>To systematise the scenarios I used an Adoption Matrix — a model that describes the path from a user's first encounter with a feature to using it regularly.</p>
+      </div>
+    </section>
+
+    <figure class="shot shot--bare">
+      <img src="../assets/images/figma/kommo/fig-01.webp" alt="The Adoption Matrix applied to Inbox" />
+      <figcaption>The Adoption Matrix applied to Inbox</figcaption>
+    </figure>
+
+    <section class="case__section">
+      <div class="case__text">
+        <p>For each stage I defined the mechanics that fit it:</p>
+        <ul>
+          <li>feature overview;</li>
+          <li>onboarding checklists;</li>
+          <li>empty states;</li>
+          <li>contextual hints;</li>
+          <li>promo blocks;</li>
+          <li>feedback requests.</li>
+        </ul>
+        <p>Instead of every team solving activation in its own way, the product got one framework for activating and promoting features that can be applied to any part of it.</p>
+      </div>
+    </section>
+
+    <aside class="callout">
+      <div class="callout__inner">
+        <img class="callout__art" src="../assets/images/figma/kommo/compass-bulb.webp" alt="" />
+        <p class="callout__text">Promote the moment a feature is needed, not the feature</p>
+      </div>
+    </aside>
+
+    <figure class="shot shot--bare">
+      <img src="../assets/images/figma/kommo/fig-02.webp" alt="" />
+    </figure>
+
+    <section class="case__section">
+      <h3>First application: messengers</h3>
+      <div class="case__text">
+        <p>The first place the model landed was messenger integrations — the core hub of the product, the thing features from other areas hang off: broadcasting, automation, the AI agent.</p>
+        <p>Connecting and using integrations was built on legacy logic made of modal windows. That solved the connection itself, but did almost nothing to explain what to do next or what a user gets once an integration is connected.</p>
+        <p>The approach itself came with a set of limits:</p>
+        <ul>
+          <li>not enough room to explain what the integration can do;</li>
+          <li>no next step after connecting;</li>
+          <li>no way to introduce the functionality step by step;</li>
+          <li>nowhere to promote new capabilities of the product.</li>
+        </ul>
+      </div>
+    </section>
+
+    <figure class="shot shot--bare">
+      <img src="../assets/images/figma/kommo/fig-03.webp" alt="The old integration modal" />
+      <figcaption>The old integration modal</figcaption>
+    </figure>
+
+    <section class="case__section">
+      <div class="case__text">
+        <p>Reworking the whole scenario was not an option: the changes would have had to roll out to every integration in the product, which multiplies the engineering effort. So I left the connection flow alone and changed what happens after it.</p>
+        <p>Teaching people needs room, and a modal does not have it: a connection form fits, an explanation of what to do next does not. So I split the two jobs apart.</p>
+        <p>Modals stayed responsible for connecting and managing an integration. Teaching and promotion moved to a new Getting started page.</p>
+      </div>
+    </section>
+
+    <figure class="shot shot--bare">
+      <img src="../assets/images/figma/kommo/fig-04.webp" alt="The new integration modal" />
+      <figcaption>The new integration modal</figcaption>
+    </figure>
+
+    <section class="case__section">
+      <div class="case__text">
+        <p>Getting started became the step between “the integration is connected” and “the person is using the product”. It holds:</p>
+        <ul>
+          <li>a checklist of next steps;</li>
+          <li>a tutorial video;</li>
+          <li>an overview of the integration's key capabilities;</li>
+          <li>links to helpful articles.</li>
+        </ul>
+      </div>
+    </section>
+
+    <figure class="shot shot--bare">
+      <img src="../assets/images/figma/kommo/fig-05.webp" alt="The Getting Started page" />
+      <figcaption>The Getting Started page</figcaption>
+    </figure>
+
+    <section class="case__section">
+      <h3>The result</h3>
+      <div class="case__text">
+        <p>The solution is a compromise: the legacy connection flow is still alive. We did not rewrite it, we went around it, moving teaching and promotion to a place with enough room for them.</p>
+        <p>The product team estimates that simplifying the connection flow together with launching Getting started added about <b>+4%</b> to trial → subscription conversion. The estimate compares cohorts of trial accounts that connected a messenger before and after the release.</p>
+        <p>The side effect mattered more than the local result: teams stopped solving activation each in their own way. Instead of one-off fixes there is now a single approach to designing product adoption that scales across different parts of the system.</p>
+        <p>That made it possible to:</p>
+        <ul>
+          <li>show that teaching people the product moves conversion, rather than just “improving usability”;</li>
+          <li>introduce new capabilities inside the interface in a systematic way;</li>
+          <li>build one shared approach to promoting new features;</li>
+          <li>make users less dependent on contacting support.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="case__section">
+      <h2>Outcome</h2>
+      <div class="case__text">
+        <p>This work showed me that designing large enterprise products is first of all work with people, constraints and a complex system — and only after that with interfaces.</p>
+        <p>Almost every decision required going deep into the existing business logic, defending the decision in front of stakeholders, long conversations with engineers, product managers and other designers, and finding a compromise between user needs, business goals, technical constraints and what the team could actually build.</p>
+        <p>This is where I became a product designer: I learned to think in systems, to make decisions under uncertainty, to defend them in front of stakeholders, and to look for solutions that bring value to users while staying realistic for the business and for engineering.</p>
+      </div>
+    </section>
+
+    <section class="case__more">
+      <div class="case__more-head"><h2>Other cases</h2></div>
+      <div class="case__more-row">
+        <div class="case__more-scroller">
+          <a class="card" href="case-adtech.html">
+            <div class="card__head">
+              <div class="card__text">
+                <p class="card__title">AdTech platform</p>
+                <p class="card__desc">How redesigning the wizard cut the core flow from 14 to 8 minutes and helped close deals with Farfetch and Target</p>
+              </div>
+              <span class="card__go"><img src="../assets/icons/chevron-right.svg" width="20" height="20" alt="" /></span>
+            </div>
+            <img class="card__art card__art--adtech" src="../assets/images/figma/home/card-adtech.webp" alt="" />
+          </a>
+          <a class="card" href="case-fitness.html">
+            <div class="card__head">
+              <div class="card__text">
+                <p class="card__title">Fitness app</p>
+                <p class="card__desc">Launched a fitness app for an influencer with an audience of 2M+ followers</p>
+              </div>
+              <span class="card__go"><img src="../assets/icons/chevron-right.svg" width="20" height="20" alt="" /></span>
+            </div>
+            <img class="card__art card__art--fitness" src="../assets/images/figma/home/card-fitness.webp" alt="" />
+          </a>
+          <a class="card" href="case-hr.html">
+            <div class="card__head">
+              <div class="card__text">
+                <p class="card__title">SaaS for HR managers and recruiters in healthcare</p>
+                <p class="card__desc">Made candidate screening 2.3× faster for a major client as the product entered the US market</p>
+              </div>
+              <span class="card__go"><img src="../assets/icons/chevron-right.svg" width="20" height="20" alt="" /></span>
+            </div>
+            <img class="card__art card__art--more-hr" src="../assets/images/figma/more/card-hr.webp" alt="" />
+          </a>
+        </div>
+        <button class="case__more-nav case__more-nav--prev" type="button" aria-label="Previous case" hidden><img src="../assets/icons/chevron-right.svg" width="20" height="20" alt="" /></button>
+        <button class="case__more-nav case__more-nav--next" type="button" aria-label="Next case"><img src="../assets/icons/chevron-right.svg" width="20" height="20" alt="" /></button>
+      </div>
+    </section>
+  </article>
+</main>
+
+<footer class="footer">
+  <nav class="footer__nav" aria-label="Contacts">
+    <a class="pill" href="mailto:kostya.ch.09@gmail.com">Email</a>
+    <a class="pill" href="https://telegram.me/designer_chirkov" target="_blank" rel="noopener">Telegram</a>
+    <a class="pill pill--dark" href="https://drive.google.com/file/d/1YVO4VuzA729BqMWlsvIMxuTHHAgMY8DL/view" target="_blank" rel="noopener">Download CV</a>
+    <a class="pill" href="https://wa.me/conychirk" target="_blank" rel="noopener">WhatsApp</a>
+    <a class="pill" href="https://www.linkedin.com/in/designer-chirkov/" target="_blank" rel="noopener">Linkedin</a>
+  </nav>
+  <p class="footer__copy">Konstantin Chirkov © 2026</p>
+</footer>
+
+<script src="../js/menu.js"></script>
+<script src="../js/case.js"></script>
+<script src="../js/cursor.js"></script>
+<script data-goatcounter="https://konstantin-chirkov.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<script src="../js/analytics.js"></script>
+</body>
+</html>

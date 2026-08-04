@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Константин Чирков — Product Designer</title>
+<meta name="description" content="Продуктовый дизайнер, 5+ лет в B2B и B2C. Специализация — enterprise и SaaS продукты со сложной логикой и legacy-ограничениями." />
+<link rel="icon" href="assets/favicon.png" sizes="128x128" />
+<link rel="apple-touch-icon" href="assets/favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="alternate" hreflang="en" href="en/index.html" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <a href="index.html" class="brandmark">
+      <span class="brandmark__ava"><img src="assets/images/home/avatar-photo.webp" alt="" /></span>
+      <span class="brandmark__name">Константин Чирков</span>
+    </a>
+    <nav class="pillnav" aria-label="Контакты">
+      <div class="pillnav__contacts" id="contacts">
+        <a class="pill" href="mailto:kostya.ch.09@gmail.com">Почта</a>
+        <a class="pill" href="https://telegram.me/designer_chirkov" target="_blank" rel="noopener">Telegram</a>
+        <a class="pill" href="https://wa.me/conychirk" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="pill" href="https://www.linkedin.com/in/designer-chirkov/" target="_blank" rel="noopener">Linkedin</a>
+      </div>
+      <a class="pill pill--lang" href="en/index.html" lang="en" hreflang="en" aria-label="Switch to English">RU</a>
+      <a class="pill pill--dark pill--cv" href="https://drive.google.com/file/d/1EtjXw3IDSppj4pPGdji8658sOHy6JcCq/view?usp=sharing" target="_blank" rel="noopener"><span>Скачать резюме</span></a>
+      <button class="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="contacts">
+        <img class="burger__open" src="assets/icons/menu.svg" width="24" height="24" alt="" />
+        <img class="burger__close" src="assets/icons/close.svg" width="24" height="24" alt="" />
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <h1 class="hero__title">
+      Привет, я — Константин Чирков, продуктовый дизайнер.<br />
+      <span class="hero__sub">5+ лет проектирую порядок в сложных B2B SaaS- и B2C-продуктах.</span>
+    </h1>
+  </section>
+
+  <div class="shell">
+    <div class="tabs" role="tablist" aria-label="Разделы портфолио">
+      <button class="tabs__btn" type="button" role="tab" id="tab-cases" aria-controls="panel-cases" aria-selected="true">Кейсы</button>
+      <button class="tabs__btn" type="button" role="tab" id="tab-visual" aria-controls="panel-visual" aria-selected="false" tabindex="-1">Визуал</button>
+    </div>
+
+    <!-- ============ Таб 1 — Кейсы ============ -->
+    <section class="grid" id="panel-cases" role="tabpanel" aria-labelledby="tab-cases">
+
+      <a class="card card--wide" href="case-amocrm.html">
+        <div class="card__head">
+          <div class="card__text">
+            <p class="card__title">
+              <img class="card__logo" src="assets/images/home/kommo-logo.webp" alt="" />
+              Kommo (ранее amoCRM)
+            </p>
+            <p class="card__desc">Как единый фреймворк активации поднял конверсию триал → подписка на 4% в enterprise CRM с 1М+ MAU</p>
+          </div>
+          <span class="card__go"><img src="assets/icons/chevron-right.svg" width="20" height="20" alt="" /></span>
+        </div>
+        <picture><source media="(max-width: 900px)" srcset="assets/images/figma/more/card-kommo.webp" /><img class="card__art card__art--kommo" src="assets/images/figma/home/card-kommo.webp" alt="" /></picture>
+      </a>
+
+      <a class="card" href="case-adtech.html">
+        <div class="card__head">
+          <div class="card__text">
+            <p class="card__title">AdTech-платформа <span class="nda">NDA</span></p>
+            <p class="card__desc">Как редизайн визарда сократил ключевой флоу с 14 до 8 минут и помог закрыть сделки с Farfetch и Target</p>
+          </div>
+          <span class="card__go"><img src="assets/icons/chevron-right.svg" width="20" height="20" alt="" /></span>
+        </div>
+        <img class="card__art card__art--adtech" src="assets/images/figma/home/card-adtech.webp" alt="" />
+      </a>
+
+      <a class="card" href="case-fitness.html">
+        <div class="card__head">
+          <div class="card__text">
+            <p class="card__title">Фитнес-приложение <span class="nda">NDA</span></p>
+            <p class="card__desc">Запустил фитнес-приложение для инфлюенсера с аудиторией 2+ млн подписчиков</p>
+          </div>
+          <span class="card__go"><img src="assets/icons/chevron-right.svg" width="20" height="20" alt="" /></span>
+        </div>
+        <img class="card__art card__art--fitness" src="assets/images/figma/home/card-fitness.webp" alt="" />
+      </a>
+
+      <a class="card card--wide" href="case-hr.html">
+        <div class="card__head">
+          <div class="card__text">
+            <p class="card__title">SaaS для HR-менеджеров и рекрутеров в медицине <span class="nda">NDA</span></p>
+            <p class="card__desc">Ускорил проверку кандидатов в 2,3 раза при выходе продукта на рынок США</p>
+          </div>
+          <span class="card__go"><img src="assets/icons/chevron-right.svg" width="20" height="20" alt="" /></span>
+        </div>
+        <picture><source media="(max-width: 900px)" srcset="assets/images/figma/more/card-hr.webp" /><img class="card__art card__art--hr" src="assets/images/figma/home/card-hr.webp" alt="" /></picture>
+      </a>
+
+    </section>
+
+    <!-- ============ Таб 2 — Визуал ============ -->
+    <section class="grid" id="panel-visual" role="tabpanel" aria-labelledby="tab-visual" hidden>
+      <div class="tile"><img src="assets/images/figma/visual/tile-01.webp" alt="" /></div>
+      <div class="tile"><img src="assets/images/figma/visual/tile-02.webp" alt="" /></div>
+      <div class="tile tile--wide"><img src="assets/images/figma/visual/tile-03.webp" alt="" /></div>
+      <div class="tile"><img src="assets/images/figma/visual/tile-04.webp" alt="" /></div>
+      <div class="tile"><img src="assets/images/figma/visual/tile-05.webp" alt="" /></div>
+      <div class="tile tile--wide"><img src="assets/images/figma/visual/tile-06.webp" alt="" /></div>
+    </section>
+  </div>
+</main>
+
+<footer class="footer">
+  <nav class="footer__nav" aria-label="Контакты">
+    <a class="pill" href="mailto:kostya.ch.09@gmail.com">Почта</a>
+    <a class="pill" href="https://telegram.me/designer_chirkov" target="_blank" rel="noopener">Telegram</a>
+    <a class="pill pill--dark" href="https://drive.google.com/file/d/1EtjXw3IDSppj4pPGdji8658sOHy6JcCq/view?usp=sharing" target="_blank" rel="noopener">Скачать резюме</a>
+    <a class="pill" href="https://wa.me/conychirk" target="_blank" rel="noopener">WhatsApp</a>
+    <a class="pill" href="https://www.linkedin.com/in/designer-chirkov/" target="_blank" rel="noopener">Linkedin</a>
+  </nav>
+  <p class="footer__copy">Константин Чирков © 2026</p>
+</footer>
+
+<script src="js/menu.js"></script>
+<script src="js/home.js"></script>
+<script src="js/cursor.js"></script>
+<script data-goatcounter="https://konstantin-chirkov.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<script src="js/analytics.js"></script>
+</body>
+</html>
