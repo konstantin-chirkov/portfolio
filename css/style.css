@@ -1,0 +1,1093 @@
+/* Konstantin Chirkov — Product Designer
+   Figma: Workspace / homepage-cases, homepage-visual, case — AdTech */
+
+:root {
+  --bg: #ffffff;
+  --ink: #1e1e1e;
+  --ink-50: rgba(30, 30, 30, 0.5);
+  --ink-soft: #949aa4;
+  --surface: #f3f4f5;
+  --line: #e5e5e5;
+  --radius-pill: 40px;
+  /* 40 — значение из макета при контенте 1160; ниже радиус тает пропорционально
+     ширине экрана, чтобы доля скругления оставалась ≈3.5% на любом размере */
+  --radius-card: clamp(16px, 3.45vw, 40px);
+  --radius-shot: clamp(8px, 1.04vw, 12px);
+  color-scheme: light;
+  font-synthesis: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Roboto", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+/* ---------- Topbar ---------- */
+
+/* Шапка физически выше, чем видно на экране: 300px сверху — её собственный
+   padding, залитый фоном. Отрицательный margin вынимает эту зону из потока,
+   а top: -300 компенсирует её при залипании, так что видимая строка встаёт
+   ровно на ноль. Нужно это для встроенных браузеров (Telegram): там вебвью
+   отдаёт верхнюю полосу под свою панель, контент в ней продолжает
+   прокручиваться, и всё, что залипший элемент рисует за пределами своей
+   коробки, WebKit отсекает. Внутри коробки — не отсекает. */
+.topbar {
+  position: sticky;
+  top: -300px;
+  z-index: 30;
+  margin-top: -300px;
+  padding-top: 300px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+
+/* на десктопе обёртка прозрачна для флекса — пилюли остаются детьми .pillnav */
+.pillnav__contacts {
+  display: contents;
+}
+
+.topbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 72px;
+  padding: 16px 30px;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.brandmark {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 40px;
+  color: var(--ink);
+}
+
+.brandmark__ava {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  flex: none;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+/* crop matches the photo framing in Figma (node 83:1076) */
+.brandmark__ava img {
+  position: absolute;
+  left: -24.12%;
+  top: -32.97%;
+  width: 149.51%;
+  height: 149.51%;
+  max-width: none;
+  object-fit: cover;
+}
+
+.brandmark__name {
+  font-size: 17px;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.pillnav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 14px;
+  border-radius: var(--radius-pill);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--ink);
+  white-space: nowrap;
+  transition: background-color 0.15s ease, opacity 0.15s ease;
+}
+
+@media (hover: hover) {
+  .pill:hover {
+    background: var(--surface);
+  }
+}
+
+.pill--dark {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+/* background здесь не дубликат: он перебивает .pill:hover, который красит
+   любую пилюлю в светлый, — без него тёмная кнопка на ховере светлеет */
+@media (hover: hover) {
+  .pill--dark:hover {
+    background: var(--ink);
+    opacity: 0.85;
+  }
+}
+
+/* icon only, no menu behind it yet */
+.burger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex: none;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  cursor: pointer;
+}
+
+/* только для мыши: на тапе :hover залипает и серый круг остаётся под крестиком */
+@media (hover: hover) {
+  .burger:hover {
+    background: var(--surface);
+  }
+}
+
+.burger img {
+  width: 24px;
+  height: 24px;
+}
+
+/* крестик показываем только в открытом состоянии */
+.burger__close,
+.topbar.is-open .burger__open {
+  display: none;
+}
+
+.topbar.is-open .burger__close {
+  display: block;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  padding: 40px 40px 0;
+  text-align: center;
+}
+
+.hero__title {
+  max-width: 850px;
+  margin: 0 auto;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 36px;
+  color: var(--ink);
+}
+
+.hero__sub {
+  font-weight: 400;
+  color: var(--ink-soft);
+}
+
+/* ---------- Tabs ---------- */
+
+/* контент 1160: карточки 568 + 24 + 568 */
+.shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.tabs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 206px;
+  margin: 0 auto 40px;
+  padding: 3px;
+  background: var(--surface);
+  border-radius: 24px;
+}
+
+.tabs__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 32px;
+  padding: 0 8px;
+  border: 1px solid transparent;
+  border-radius: 25px;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.tabs__btn[aria-selected="true"] {
+  background: var(--bg);
+  border-color: var(--line);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* ---------- Grid (shared by both tabs) ---------- */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.grid[hidden] {
+  display: none;
+}
+
+.card--wide,
+.tile--wide {
+  grid-column: 1 / -1;
+}
+
+/* ---------- Case card ---------- */
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-height: 580px;
+  overflow: hidden;
+  background: var(--surface);
+  border-radius: var(--radius-card);
+  color: inherit;
+  transition: box-shadow 0.15s ease;
+}
+
+/* Обводка та же, что у шапки. Не border, а внутренняя тень — иначе рамка съедает
+   пиксель по кругу и на ховере перевёрстывается текст внутри карточки. */
+@media (hover: hover) {
+  .card:hover {
+    box-shadow: inset 0 0 0 1px var(--line);
+  }
+}
+
+/* ---------- Курсор «Открыть» над карточками ---------- */
+
+/* без медиа-запроса элемент не должен показываться вообще */
+.cursor {
+  display: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  /* класс вешает скрипт — если он не загрузился, остаётся обычная стрелка */
+  .has-cursor .card {
+    cursor: none;
+  }
+
+  .cursor {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(30, 30, 30, 0.3);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    color: var(--bg);
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    /* позицию задаёт transform из скрипта, поэтому масштаб — отдельным свойством */
+    scale: 0.6;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.18s ease, scale 0.18s ease;
+  }
+
+  .cursor.is-on {
+    scale: 1;
+    opacity: 1;
+  }
+}
+
+/* арт в макете заходит под текст, а в экспорте у него непрозрачный фон карточки —
+   поэтому шапку кладём поверх */
+.card__head {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 40px 40px 0;
+}
+
+.card__text {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* не flex: иначе на узком экране «NDA» отрывается от переносящегося заголовка */
+.card__title {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 24px;
+  color: var(--ink);
+}
+
+.card__title .nda {
+  color: var(--ink-50);
+}
+
+.card__logo {
+  display: inline-block;
+  vertical-align: -4px;
+  width: 20px;
+  height: 20px;
+  margin-right: 7px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.card__desc {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--ink-soft);
+}
+
+.card__go {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-pill);
+  background: #ffffff;
+  border: 1px solid var(--line);
+}
+
+.card__go img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Арт лежит в карточке по координатам из макета и подрезается её краями,
+   поэтому он абсолютный, а не вписан в блок. Проценты — от размеров карточки. */
+.card__art {
+  position: absolute;
+  height: auto;
+  pointer-events: none;
+}
+
+/* <picture> нужен только чтобы подменить источник на узком экране —
+   в раскладке его быть не должно. */
+.card picture {
+  display: contents;
+}
+
+/* подрезан левым краем карточки, справа добавляет тень графика */
+.card__art--adtech {
+  left: 0;
+  top: 24.919%;
+  width: 99.531%;
+}
+
+/* подрезан обоими краями — ровно по ширине карточки */
+.card__art--fitness {
+  left: 0;
+  top: 16.207%;
+  width: 100%;
+}
+
+.card__art--hr {
+  left: 3.19%;
+  top: 22.931%;
+  width: 93.621%;
+}
+
+/* В «Других кейсах» карточка узкая (568), поэтому у HR и Kommo там свой арт
+   со своей геометрией — не уменьшенная копия обложки с главной. */
+.card__art--more-hr {
+  left: 6.631%;
+  top: 27.098%;
+  width: 93.369%;
+}
+
+.card__art--more-kommo {
+  left: 7.042%;
+  top: 31.782%;
+  width: 92.958%;
+}
+
+/* Одна картинка на панель и подсказку разом. Двумя слоями нельзя: у экспорта
+   подсказки серый фон запечён непрозрачным и перекрывал белую панель под ней. */
+.card__art--kommo {
+  left: 16.735%;
+  top: 24.022%;
+  width: 62.816%;
+}
+
+/* ---------- Visual tile ---------- */
+
+.tile {
+  min-height: 580px;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+}
+
+.tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- Footer ---------- */
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding: 0 20px 40px;
+  text-align: center;
+}
+
+.footer__nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.footer__copy {
+  margin: 0;
+  font-size: 17px;
+  line-height: 20px;
+  color: var(--ink-soft);
+}
+
+/* =========================================================
+   Case study page — Figma: "case — AdTech" (117:2)
+   Every block sits in a 40px vertical rhythm.
+   ========================================================= */
+
+.case {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+/* текстовая колонка: 150 из 1200 по макету = 12.5% */
+.case__lead,
+.case__meta,
+.case__brief,
+.case__section,
+.case__more-head {
+  padding: 0 12.5%;
+}
+
+.case > .case__lead {
+  margin: 0;
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 36px;
+  color: var(--ink);
+}
+
+/* приглушённая часть лида — «ранее amoCRM» в макете серая */
+.case__lead .muted {
+  color: var(--ink-soft);
+}
+
+.case__meta {
+  display: flex;
+  gap: 40px;
+  margin: 0;
+  font-size: 17px;
+  line-height: 32px;
+}
+
+.case__meta > div,
+.case__meta-pair > div {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.case__meta dt {
+  color: var(--ink-soft);
+}
+
+.case__meta dd {
+  margin: 0;
+  color: var(--ink);
+}
+
+/* the two right-hand columns share one half of the row */
+.case__meta-pair {
+  display: flex;
+  gap: 40px;
+}
+
+.case__brief {
+  display: flex;
+  gap: 40px;
+}
+
+.case__brief > div {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.case__section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* абзацы внутри одного блока идут через 16, а не через 20 */
+.case__text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.case h2 {
+  margin: 0;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 36px;
+  color: var(--ink);
+}
+
+/* подзаголовок внутри раздела */
+.case h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+  color: var(--ink);
+}
+
+/* Kommo: раздел собран из подсекций — 24 до подзаголовка, 16 от него до текста */
+.case--kommo .case__section {
+  gap: 16px;
+}
+
+.case--kommo .case__section h3 {
+  margin-top: 8px;
+}
+
+.case ul {
+  margin: 0;
+  padding-left: 25.5px;
+  list-style: disc;
+}
+
+/* нумерованный список — только в блоке «Инсайт», тезисы там пронумерованы */
+.case ol {
+  margin: 0;
+  padding-left: 25.5px;
+  list-style: decimal;
+}
+
+.case li {
+  font-size: 17px;
+  line-height: 32px;
+  letter-spacing: 0.017px;
+  color: var(--ink);
+}
+
+.case p {
+  margin: 0;
+  font-size: 17px;
+  line-height: 32px;
+  letter-spacing: 0.017px;
+  color: var(--ink);
+}
+
+.case b {
+  font-weight: 700;
+}
+
+/* ---------- Карточка-вывод и карточка рекомендации ---------- */
+
+/* Оба блока живут по сетке скриншотов (120 из 1200 = 10%), а не текста:
+   в макете они той же ширины, что и картинки кейса. */
+.callout,
+.reco {
+  padding: 0 10%;
+}
+
+/* Общая коробка: серая плашка со скруглением карточки. overflow скрывает то,
+   что вылезает за край, — в макете и лампочка, и письмо намеренно обрезаны. */
+.callout__inner,
+.reco__inner {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  background: var(--surface);
+  border-radius: var(--radius-card);
+}
+
+.callout__inner {
+  align-items: center;
+  min-height: 280px;
+  padding: 0 40px 0 380px;
+}
+
+/* 350 из макета, из них 70 свисают за нижний край и режутся. Позиционируется
+   абсолютно: в потоке картинка выше плашки и растянула бы её до 342. */
+.callout__art {
+  position: absolute;
+  top: -8px;
+  left: 30px;
+  width: 350px;
+  height: 350px;
+}
+
+/* .case-префикс обязателен: оба блока лежат внутри .case, и правило .case p
+   (17px) перебивает одноклассовый селектор по специфичности.
+   430 — ширина текстового блока в макете: фраза намеренно ломается на две
+   строки, без ограничения она вытягивается в одну и теряет ритм */
+.case .callout__text {
+  max-width: 430px;
+  margin: 0;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 36px;
+  color: var(--ink);
+}
+
+.reco__inner {
+  align-items: center;
+  min-height: 280px;
+  padding: 40px;
+}
+
+/* 400 держит перенос после «руководителя» — в макете заголовок в две строки */
+.reco__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  max-width: 400px;
+}
+
+.case .reco__title {
+  margin: 0;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 36px;
+  color: var(--ink);
+}
+
+/* Письмо стоит не по правому краю, а с отбивкой 118 — как в макете,
+   поэтому позиционируется абсолютно, а не флексом. Тень многослойная
+   без размытия: это стопка страниц, а не мягкое падение. */
+.reco__shot {
+  position: absolute;
+  top: 50px;
+  right: 118px;
+  width: 296px;
+  border-radius: 12px;
+  box-shadow:
+    5.62px 5.62px 0 rgba(45, 92, 243, 0.4),
+    11.24px 11.24px 0 rgba(45, 92, 243, 0.3),
+    16.86px 16.86px 0 rgba(45, 92, 243, 0.2),
+    22.48px 22.48px 0 rgba(45, 92, 243, 0.1),
+    28.1px 28.1px 0 rgba(45, 92, 243, 0.05);
+}
+
+/* ---------- Screenshot figure ---------- */
+
+/* блок со скрином: 120 из 1200 по макету = 10% */
+.shot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin: 0;
+  padding: 0 10%;
+}
+
+.shot__frame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 30px;
+  overflow: hidden;
+  background: var(--surface);
+  border-radius: var(--radius-card);
+}
+
+/* box-shadow, а не filter: drop-shadow — фильтр растрирует картинку в 1x и мылит её на ретине */
+.shot__frame img {
+  width: 100%;
+  border-radius: var(--radius-shot);
+  box-shadow: 0 15px 14.5px rgba(51, 53, 63, 0.04);
+}
+
+/* картинка уже содержит серую подложку — своей рамки не рисуем */
+.shot--bare {
+  gap: 20px;
+}
+
+.shot--bare img {
+  width: 100%;
+  border-radius: var(--radius-card);
+}
+
+/* в макете AdTech подпись стоит ближе — 16 вместо 20 */
+.shot--tight {
+  gap: 16px;
+}
+
+.shot figcaption {
+  font-size: 17px;
+  line-height: 32px;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+/* ---------- Other cases ---------- */
+
+.case__more {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.case__more-row {
+  position: relative;
+  padding: 0 10%;
+}
+
+/* лента режется краем контейнера, поэтому сам отрез скруглён — иначе у карточки,
+   которая уходит за границу, получается прямой срез */
+.case__more-scroller {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  border-radius: var(--radius-card);
+  /* proximity, а не mandatory: mandatory отменяет плавную прокрутку по кнопкам */
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+}
+
+.case__more-scroller::-webkit-scrollbar {
+  display: none;
+}
+
+.case__more-scroller .card {
+  flex: none;
+  width: 568px;
+  scroll-snap-align: start;
+}
+
+/* кнопки листания сидят центром ровно на границе ленты */
+.case__more-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--ink);
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.case__more-nav[hidden] {
+  display: none;
+}
+
+@media (hover: hover) {
+  .case__more-nav:hover {
+    opacity: 0.85;
+  }
+}
+
+.case__more-nav--next {
+  right: calc(10% - 32px);
+}
+
+.case__more-nav--prev {
+  left: calc(10% - 32px);
+}
+
+/* тёмная кнопка — иконку инвертируем в белую */
+.case__more-nav img {
+  width: 20px;
+  height: 20px;
+  filter: invert(1);
+}
+
+/* «назад» — та же иконка, отражённая */
+.case__more-nav--prev img {
+  transform: scaleX(-1);
+}
+
+/* ---------- Responsive ---------- */
+
+/* Один брейкпоинт на всё: сетка, шапка и типографика переключаются вместе */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .card--wide,
+  .tile--wide {
+    grid-column: auto;
+  }
+  .card {
+    min-height: 0;
+  }
+  .tile {
+    min-height: 300px;
+  }
+
+  /* Координаты из макета осмысленны только на десктопе: на узком экране шапка
+     вырастает с двух строк до пяти и арт наезжает на текст. Возвращаем в поток
+     и отбиваем скриншот интерфейса от краёв теми же 24, что у текста: иначе он
+     упирается в правый край и его срезает скругление карточки. Слева арт встаёт
+     на одну вертикаль с текстом, а справа и снизу намеренно выходит за карточку:
+     мокап остаётся крупным, а вместе с краями за обрез уезжает и запечённое
+     в PNG скругление. Верхний auto прижимает арт к низу — в ленте «Других
+     кейсов» карточки тянутся под самую высокую, и пустое место должно копиться
+     над мокапом, как в макете, а не под ним. */
+  .card__art {
+    position: static;
+    width: calc((100% - 24px) * 1.35);
+    max-width: none;
+    margin: auto 0 -12% 24px;
+  }
+  /* Обложки нарисованы во всю карточку, серый фон запечён прямо в PNG —
+     любой отступ читается стыком. Их оставляем во всю ширину и не прижимаем
+     к низу: телефоны и монитор должны стоять сразу под текстом. */
+  .card__art--adtech,
+  .card__art--fitness {
+    width: 100%;
+    margin: 0;
+  }
+  /* шапка: контакты уезжают в футер, остаются резюме и бургер */
+  .topbar__inner {
+    padding: 16px;
+  }
+  .brandmark__name {
+    display: none;
+  }
+  .pillnav {
+    gap: 8px;
+  }
+  .pillnav__contacts {
+    display: none;
+  }
+  .burger {
+    display: inline-flex;
+  }
+
+  /* Открытый бургер: контакты выезжают полосой под шапкой — те же пилюли,
+     что и на десктопе, просто в другом раскладе. Контент не сдвигается. */
+  .topbar.is-open .pillnav__contacts {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    z-index: 1;
+    display: flex;
+    gap: 8px;
+    padding: 0 11px 16px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .topbar.is-open .pillnav__contacts::-webkit-scrollbar {
+    display: none;
+  }
+  .topbar.is-open .pillnav__contacts .pill {
+    flex: none;
+  }
+
+  .hero {
+    padding: 32px 20px 0;
+  }
+  .hero__title {
+    font-size: 22px;
+    line-height: 30px;
+  }
+  .shell {
+    padding: 32px 16px;
+  }
+  .card__head {
+    padding: 28px 24px 0;
+  }
+
+  .case {
+    gap: 32px;
+    padding: 32px 16px;
+  }
+  .case__lead,
+  .case__meta,
+  .case__brief,
+  .case__section,
+  .case__more-head,
+  .shot,
+  .callout,
+  .reco,
+  .case__more-row {
+    padding: 0;
+  }
+
+  /* На узком экране обе карточки складываются в колонку: 350-я лампочка и
+     письмо в 296 рядом с текстом физически не помещаются. Картинки при этом
+     остаются подрезанными краем плашки — приём из макета сохраняется. */
+  .callout__inner,
+  .reco__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 0;
+    padding: 24px;
+  }
+  .callout__art {
+    position: static;
+    order: 2;
+    width: 200px;
+    height: 200px;
+    margin: 4px 0 -56px -16px;
+  }
+  /* те же 22/30, что у .case h2: это заголовочные фразы, а не подзаголовки */
+  .case .callout__text {
+    order: 1;
+    font-size: 22px;
+    line-height: 30px;
+  }
+  .case .reco__title {
+    font-size: 22px;
+    line-height: 30px;
+  }
+  /* на узком экране письмо крупнее относительно плашки и текст в нём начинает
+     читаться — поэтому показываем только шапку бланка, остальное срезаем */
+  .reco__shot {
+    position: static;
+    width: 180px;
+    margin: 24px 0 -176px;
+    align-self: center;
+  }
+  .case > .case__lead {
+    font-size: 20px;
+    line-height: 30px;
+  }
+  .case h2 {
+    font-size: 22px;
+    line-height: 30px;
+  }
+  .case p {
+    line-height: 28px;
+  }
+  .case__meta {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .case__meta-pair {
+    gap: 40px;
+  }
+  .case__brief {
+    flex-direction: column;
+    gap: 28px;
+  }
+  .shot__frame {
+    padding: 16px;
+  }
+  /* на телефоне листаем свайпом, кнопки только мешают */
+  .case__more-nav {
+    display: none;
+  }
+  .case__more-scroller .card {
+    width: 84%;
+    max-width: 568px;
+  }
+
+  .footer {
+    gap: 28px;
+    padding: 0 16px 32px;
+  }
+  .footer__nav {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 360px;
+    gap: 8px;
+  }
+  /* контакты — просто чёрный текст, без подложки */
+  .footer__nav .pill {
+    width: 100%;
+    background: transparent;
+    color: var(--ink);
+  }
+  /* резюме остаётся кнопкой, но по ширине контента, а не на всю строку */
+  .footer__nav .pill--dark {
+    width: auto;
+    align-self: center;
+    padding: 0 20px;
+    background: var(--ink);
+    color: var(--bg);
+  }
+}
