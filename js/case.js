@@ -27,3 +27,18 @@
   window.addEventListener("resize", sync);
   sync();
 })();
+
+(function () {
+  var bar = document.querySelector(".case__progress");
+  if (!bar) return;
+
+  function update() {
+    var doc = document.documentElement;
+    var max = doc.scrollHeight - doc.clientHeight;
+    bar.style.width = (max > 0 ? (doc.scrollTop / max) * 100 : 0) + "%";
+  }
+
+  window.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", update);
+  update();
+})();
