@@ -7,6 +7,7 @@
   --ink-soft: #949aa4;
   --surface: #f3f4f5;
   --line: #e5e5e5;
+  --tag-line: #e5e5e8;
   /* единственный цвет на сайте — им помечен переключатель языка, чтобы его
      находили глазами в монохромной шапке */
   --lang: #fb7660;
@@ -328,19 +329,50 @@ button {
   grid-column: 1 / -1;
 }
 
+
 /* ---------- Case card ---------- */
 
+/* Пропорции карточки из макета: обычная 568x580, широкая 1160x580. Держим их
+   через aspect-ratio, а не фиксированной высотой: арт внутри позиционируется
+   процентами от ШИРИНЫ карточки, и при жёсткой высоте на промежуточных экранах
+   (900-1240) картинка перестаёт доставать до низа — становится виден её край с
+   запечённой тенью. С пропорцией кроп везде такой же, как в макете. */
 .card {
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 24px;
-  min-height: 580px;
+  aspect-ratio: 568 / 580;
   overflow: hidden;
   background: var(--surface);
   border-radius: var(--radius-card);
   color: inherit;
   transition: box-shadow 0.15s ease;
+}
+
+/* Внутренняя тень из макета. Мокап подрезан краем карточки, и по нижнему
+   краю идёт лёгкое затемнение — три слоя по 1% чёрного, ровно как в Figma
+   (там же есть ещё два слоя с alpha 0, они ничего не рисуют, поэтому их нет).
+   Рисуем оверлеем, а не box-shadow на самой карточке: inset-тень элемента
+   ложится под его же детей, то есть ушла бы под мокап. */
+.card::after,
+.tile::after,
+.callout__inner::after,
+.reco__inner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow:
+    inset 0 -1px 1px rgba(0, 0, 0, 0.01),
+    inset -1px -3px 3px rgba(0, 0, 0, 0.01),
+    inset -2px -6px 4px rgba(0, 0, 0, 0.01);
+}
+
+/* объявляем после .card: специфичность та же, побеждает порядок */
+.card--wide {
+  aspect-ratio: 1160 / 580;
 }
 
 /* Обводка та же, что у шапки. Не border, а внутренняя тень — иначе рамка съедает
@@ -408,12 +440,74 @@ button {
   padding: 40px 40px 0;
 }
 
-.card__text {
+/* колонка шапки: текст и теги, между ними 8 из макета */
+.card__body {
   flex: 1 1 0;
   min-width: 0;
   display: flex;
   flex-direction: column;
+  gap: 8px;
+}
+
+.card__text {
+  display: flex;
+  flex-direction: column;
   gap: 6px;
+}
+
+/* Теги кейса. Из макета: высота 32, паддинги 0/12, радиус 8, рамка 1px,
+   Roboto Medium 14, зазор в ряду 4. В макете ряд не переносится, но на узком
+   экране пять тегов в строку не помещаются — разрешаем перенос.
+   Заливка зависит от подложки: на серой карточке превью чип белый, на белой
+   странице кейса — серый. */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tags li {
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--tag-line);
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.card__tags li {
+  background: var(--bg);
+}
+
+/* .case ul задаёт отступ и маркеры для маркированных списков и перебивает
+   одноклассовые правила тегов — поэтому колонку задаём двухклассовым селектором */
+.case .case__tags {
+  padding: 0 12.5%;
+  list-style: none;
+}
+
+/* Карточки в ленте «Других кейсов» лежат внутри .case, поэтому их ряд тегов
+   тоже ловит .case ul и уезжает вправо от заголовка. Сбрасываем. */
+.case .card__tags {
+  padding: 0;
+  list-style: none;
+}
+
+/* .case li задаёт списочную типографику 17/32 и перебивает .tags li той же
+   специфичностью, но ниже по файлу — поэтому здесь двухклассовый селектор */
+.case .case__tags li {
+  background: var(--surface);
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: normal;
 }
 
 /* не flex: иначе на узком экране «NDA» отрывается от переносящегося заголовка */
@@ -478,50 +572,68 @@ button {
 .card__art--adtech {
   left: 0;
   top: 24.919%;
-  width: 99.531%;
+  width: 94.366%;
 }
 
 /* подрезан обоими краями — ровно по ширине карточки */
-.card__art--fitness {
+/* В ленте «Других кейсов» у фитнеса своя посадка: шапка там другой высоты,
+   а в самой картинке сверху пустое поле — телефоны начинаются ниже. */
+.card__art--more-fitness {
   left: 0;
-  top: 16.207%;
+  top: 23.103%;
   width: 100%;
 }
 
+/* v1.1: арт опустился с 94 до 112 — шапка выросла на ряд тегов */
+.card__art--fitness {
+  left: 0;
+  top: 19.31%;
+  width: 100%;
+}
+
+/* v1.1: шапка карточки выросла на ряд тегов, поэтому арт опустился со
+   22.931% до 27.241%. Экспорт шире узла на вылет тени — отсюда сдвиг влево. */
 .card__art--hr {
-  left: 3.19%;
-  top: 22.931%;
-  width: 93.621%;
+  left: 5.393%;
+  top: 26.897%;
+  width: 89.253%;
 }
 
 /* В «Других кейсах» карточка узкая (568), поэтому у HR и Kommo там свой арт
    со своей геометрией — не уменьшенная копия обложки с главной. */
 .card__art--more-hr {
-  left: 6.631%;
-  top: 27.098%;
-  width: 93.369%;
+  left: 6.627%;
+  top: 32.143%;
+  width: 93.373%;
 }
 
+/* v1.1: шапка ленты выросла на ряд тегов и лишилась стрелки — 158px */
 .card__art--more-kommo {
   left: 7.042%;
-  top: 31.782%;
+  top: 31.676%;
   width: 92.958%;
 }
 
 /* Одна картинка на панель и подсказку разом. Двумя слоями нельзя: у экспорта
    подсказки серый фон запечён непрозрачным и перекрывал белую панель под ней. */
+/* v1.1: арт опустился со 141 до 156 — шапка выросла на ряд тегов */
 .card__art--kommo {
   left: 16.735%;
-  top: 24.022%;
+  top: 26.609%;
   width: 62.816%;
 }
 
 /* ---------- Visual tile ---------- */
 
 .tile {
-  min-height: 580px;
+  position: relative;
+  aspect-ratio: 568 / 580;
   overflow: hidden;
   border-radius: var(--radius-card);
+}
+
+.tile--wide {
+  aspect-ratio: 1160 / 580;
 }
 
 .tile img {
@@ -572,6 +684,7 @@ button {
 
 /* текстовая колонка: 150 из 1200 по макету = 12.5% */
 .case__lead,
+.case__tags,
 .case__meta,
 .case__brief,
 .case__section,
@@ -809,6 +922,45 @@ button {
     28.1px 28.1px 0 rgba(45, 92, 243, 0.05);
 }
 
+/* Надзаголовок-рубрика над h2 («UX/UI-дизайн» в AdTech). 17px, как основной
+   текст, но капсом и приглушённый — в макете это отдельная строка над разделом. */
+/* .case p (0-1-1) перебивает одноклассовую рубрику, поэтому селектор двойной.
+   Значения из макета: 17/32, серый, трекинг 0.1%, текст набран капсом вручную. */
+.case .case__eyebrow {
+  margin: 0;
+  font-size: 17px;
+  line-height: 32px;
+  letter-spacing: 0.017px;
+  color: var(--ink-soft);
+}
+
+/* Внутренняя тень на изображениях: три слоя по 1% чёрного из макета. Кладём её
+   отдельным слоем поверх картинки — на <img> inset-тень не рисуется вовсе. */
+.shot__inset {
+  position: relative;
+  display: block;
+  width: 100%;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+
+.shot__inset::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow:
+    inset 0 -1px 1px rgba(0, 0, 0, 0.01),
+    inset -1px -3px 3px rgba(0, 0, 0, 0.01),
+    inset -2px -6px 4px rgba(0, 0, 0, 0.01);
+}
+
+.shot__inset img {
+  width: 100%;
+  border-radius: inherit;
+}
+
 /* ---------- Screenshot figure ---------- */
 
 /* блок со скрином: 120 из 1200 по макету = 10% */
@@ -819,24 +971,6 @@ button {
   gap: 16px;
   margin: 0;
   padding: 0 10%;
-}
-
-.shot__frame {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  padding: 30px;
-  overflow: hidden;
-  background: var(--surface);
-  border-radius: var(--radius-card);
-}
-
-/* box-shadow, а не filter: drop-shadow — фильтр растрирует картинку в 1x и мылит её на ретине */
-.shot__frame img {
-  width: 100%;
-  border-radius: var(--radius-shot);
-  box-shadow: 0 15px 14.5px rgba(51, 53, 63, 0.04);
 }
 
 /* картинка уже содержит серую подложку — своей рамки не рисуем */
@@ -894,6 +1028,7 @@ button {
 .case__more-scroller .card {
   flex: none;
   width: 568px;
+  aspect-ratio: 568 / 580;
   scroll-snap-align: start;
 }
 
@@ -948,7 +1083,7 @@ button {
 /* ---------- Responsive ---------- */
 
 /* Один брейкпоинт на всё: сетка, шапка и типографика переключаются вместе */
-@media (max-width: 900px) {
+@media (max-width: 1023px) {
   .grid {
     grid-template-columns: 1fr;
   }
@@ -956,7 +1091,12 @@ button {
   .tile--wide {
     grid-column: auto;
   }
-  .card {
+  /* на телефоне арт уходит в поток и высота карточки определяется контентом —
+     пропорция из макета здесь только мешала бы */
+  .card,
+  .card--wide,
+  .case__more-scroller .card {
+    aspect-ratio: auto;
     min-height: 0;
   }
   /* В одну колонку выравнивать плитки по общей высоте не нужно, а вреда от этого
@@ -967,7 +1107,9 @@ button {
      поверх страницы за края экрана. Отдаём плитке высоту самой картинки:
      обрезать становится нечего, и на телефоне видно весь визуал, а не полосу
      из центра. */
-  .tile {
+  .tile,
+  .tile--wide {
+    aspect-ratio: auto;
     min-height: 0;
   }
   .tile img {
@@ -993,9 +1135,18 @@ button {
      любой отступ читается стыком. Их оставляем во всю ширину и не прижимаем
      к низу: телефоны и монитор должны стоять сразу под текстом. */
   .card__art--adtech,
-  .card__art--fitness {
+  .card__art--fitness,
+  .card__art--more-fitness {
     width: 100%;
     margin: 0;
+  }
+  /* Карточки в ленте держим одной высоты — разная высота в ряду читается
+     рваной. Лишнее место отдаём не одному краю, а обоим сразу: верхний и
+     нижний auto делят его поровну, и мокап встаёт по центру пустой области
+     под текстом, а не прилипает к шапке или к нижнему краю. */
+  .case__more-scroller .card__art {
+    margin-top: auto;
+    margin-bottom: auto;
   }
   /* шапка: контакты уезжают в футер, остаются резюме и бургер */
   .topbar__inner {
@@ -1056,6 +1207,9 @@ button {
   .case {
     gap: 32px;
     padding: 32px 16px;
+  }
+  .case .case__tags {
+    padding: 0;
   }
   .case__lead,
   .case__meta,
@@ -1162,5 +1316,23 @@ button {
     padding: 0 20px;
     background: var(--ink);
     color: var(--bg);
+  }
+}
+
+/* Планшетная полоса 601–1023: раскладка уже одноколоночная, но карточка тут
+   вдвое-втрое шире телефонной, и множитель 1.35 раздувал мокап до зума —
+   интерфейс на обложке читался крупнее реального. Оставляем тот же приём
+   (левый край по тексту, правый за обрез), но выпуск за карточку держим
+   на 12% её ширины, а не на 33%, как на телефоне. */
+@media (min-width: 601px) and (max-width: 1023px) {
+  .card__art {
+    width: calc((100% - 24px) * 1.125);
+  }
+  /* обложки во всю карточку множитель не касается: серый фон у них запечён
+     в картинку, любой выпуск за край показал бы её собственную границу */
+  .card__art--adtech,
+  .card__art--fitness,
+  .card__art--more-fitness {
+    width: 100%;
   }
 }

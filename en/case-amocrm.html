@@ -44,6 +44,13 @@
   <article class="case case--kommo">
     <p class="case__lead">Kommo <span class="muted">formerly amoCRM</span> — an international CRM for sales and customer communication through messengers, with 1M+ MAU</p>
 
+    <ul class="tags case__tags">
+      <li>B2B</li>
+      <li>CRM</li>
+      <li>Web</li>
+      <li>Growth design</li>
+    </ul>
+
     <dl class="case__meta">
       <div>
         <dt>My role</dt>
@@ -78,9 +85,8 @@
       <h3>The problem</h3>
       <div class="case__text">
         <p>The team came with a hypothesis: users do not understand the product's value, so they never convert to a paid subscription. Teams regularly filed tasks to rework features, assuming the main problem was interface complexity.</p>
-        <p>The interviews said something else: most people got started just fine — they connected messengers, set up the CRM and ran deals. The problem showed up later: users often did not know about other features or did not see any value in them, so the aha moment never came.</p>
-        <p>The problem was systemic: teams promoted features in inconsistent ways, with no shared approach to activation. Hints showed up in different places in the interface and read as a pile of disconnected messages, which users mostly ignored.</p>
         <p>The situation was made harder by a non-linear user journey, shaped by goals, connected integrations, account state and where the person entered the product. So a single onboarding that fit everyone simply did not exist.</p>
+        <p>The problem was systemic: teams promoted features in inconsistent ways, with no shared approach to activation. Hints showed up in different places in the interface and read as a pile of disconnected messages, which users mostly ignored.</p>
       </div>
 
       <h3>The insight</h3>
@@ -100,7 +106,7 @@
     </section>
 
     <figure class="shot shot--bare">
-      <img src="../assets/images/figma/kommo/fig-01.webp" alt="The Adoption Matrix applied to Inbox" />
+      <span class="shot__inset"><img src="../assets/images/figma/kommo/fig-01.webp" alt="The Adoption Matrix applied to Inbox" /></span>
       <figcaption>The Adoption Matrix applied to Inbox</figcaption>
     </figure>
 
@@ -127,15 +133,14 @@
     </aside>
 
     <figure class="shot shot--bare">
-      <img src="../assets/images/figma/kommo/fig-02.webp" alt="" />
+      <span class="shot__inset"><img src="../assets/images/figma/kommo/fig-02.webp" alt="" /></span>
     </figure>
 
     <section class="case__section">
       <h3>First application: messengers</h3>
       <div class="case__text">
         <p>The first place the model landed was messenger integrations — the core hub of the product, the thing features from other areas hang off: broadcasting, automation, the AI agent.</p>
-        <p>Connecting and using integrations was built on legacy logic made of modal windows. That solved the connection itself, but did almost nothing to explain what to do next or what a user gets once an integration is connected.</p>
-        <p>The approach itself came with a set of limits:</p>
+        <p>Connecting and using integrations was built on a legacy flow made of modal windows. That approach came with a set of limits:</p>
         <ul>
           <li>not enough room to explain what the integration can do;</li>
           <li>no next step after connecting;</li>
@@ -146,21 +151,21 @@
     </section>
 
     <figure class="shot shot--bare">
-      <img src="../assets/images/figma/kommo/fig-03.webp" alt="The old integration modal" />
+      <span class="shot__inset"><img src="../assets/images/figma/kommo/fig-03.webp" alt="The old integration modal" /></span>
       <figcaption>The old integration modal</figcaption>
     </figure>
 
     <section class="case__section">
       <div class="case__text">
-        <p>Reworking the whole scenario was not an option: the changes would have had to roll out to every integration in the product, which multiplies the engineering effort. So I left the connection flow alone and changed what happens after it.</p>
+        <p>Reworking the whole flow was not an option: the changes would have had to roll out to every integration in the product, which multiplies the engineering effort. So I left the connection flow alone and changed what happens after it.</p>
         <p>Teaching people needs room, and a modal does not have it: a connection form fits, an explanation of what to do next does not. So I split the two jobs apart.</p>
-        <p>Modals stayed responsible for connecting and managing an integration. Teaching and promotion moved to a new Getting started page.</p>
+        <p>Modals stayed responsible for connecting and managing an integration, while teaching and promotion moved to a new Getting started page.</p>
       </div>
     </section>
 
     <figure class="shot shot--bare">
-      <img src="../assets/images/figma/kommo/fig-04.webp" alt="The new integration modal" />
-      <figcaption>The new integration modal</figcaption>
+      <span class="shot__inset"><img src="../assets/images/figma/kommo/fig-04.webp" alt="The updated integration modal and the new Getting started page" /></span>
+      <figcaption>The updated integration modal and the new Getting started page</figcaption>
     </figure>
 
     <section class="case__section">
@@ -174,11 +179,6 @@
         </ul>
       </div>
     </section>
-
-    <figure class="shot shot--bare">
-      <img src="../assets/images/figma/kommo/fig-05.webp" alt="The Getting Started page" />
-      <figcaption>The Getting Started page</figcaption>
-    </figure>
 
     <section class="case__section">
       <h3>The result</h3>
@@ -211,31 +211,53 @@
         <div class="case__more-scroller">
           <a class="card" href="case-adtech.html">
             <div class="card__head">
-              <div class="card__text">
-                <p class="card__title">AdTech platform</p>
-                <p class="card__desc">How redesigning the wizard cut the core flow from 14 to 8 minutes and helped close deals with Farfetch and Target</p>
+              <div class="card__body">
+                <div class="card__text">
+                  <p class="card__title">AdTech platform</p>
+                  <p class="card__desc">How redesigning the wizard cut the core flow from 14 to 8 minutes and helped close deals with Farfetch and Target</p>
+                </div>
+                <ul class="tags card__tags">
+                  <li>UX/UI redesign</li>
+                  <li>B2B</li>
+                  <li>AdTech</li>
+                  <li>Web</li>
+                </ul>
               </div>
-              <span class="card__go"><img src="../assets/icons/chevron-right.svg" width="20" height="20" alt="" /></span>
             </div>
             <img class="card__art card__art--adtech" src="../assets/images/figma/home/card-adtech.webp" alt="" />
           </a>
           <a class="card" href="case-fitness.html">
             <div class="card__head">
-              <div class="card__text">
-                <p class="card__title">Fitness app</p>
-                <p class="card__desc">Launched a fitness app for an influencer with an audience of 2M+ followers</p>
+              <div class="card__body">
+                <div class="card__text">
+                  <p class="card__title">Fitness app</p>
+                  <p class="card__desc">Launched a fitness app for an influencer with an audience of 2M+ followers</p>
+                </div>
+                <ul class="tags card__tags">
+                  <li>B2C</li>
+                  <li>Mobile</li>
+                  <li>Web</li>
+                  <li>FitTech</li>
+                </ul>
               </div>
-              <span class="card__go"><img src="../assets/icons/chevron-right.svg" width="20" height="20" alt="" /></span>
             </div>
-            <img class="card__art card__art--fitness" src="../assets/images/figma/home/card-fitness.webp" alt="" />
+            <img class="card__art card__art--more-fitness" src="../assets/images/figma/home/card-fitness.webp" alt="" />
           </a>
           <a class="card" href="case-hr.html">
             <div class="card__head">
-              <div class="card__text">
-                <p class="card__title">SaaS for HR managers and recruiters in healthcare</p>
-                <p class="card__desc">Made candidate screening 2.3× faster for a major client as the product entered the US market</p>
+              <div class="card__body">
+                <div class="card__text">
+                  <p class="card__title">SaaS for HR managers and recruiters in healthcare</p>
+                  <p class="card__desc">Made candidate screening 2.3× faster for a major client as the product entered the US market</p>
+                </div>
+                <ul class="tags card__tags">
+                  <li>B2B</li>
+                  <li>HRTech</li>
+                  <li>MedTech</li>
+                  <li>Web</li>
+                  <li>Design system</li>
+                </ul>
               </div>
-              <span class="card__go"><img src="../assets/icons/chevron-right.svg" width="20" height="20" alt="" /></span>
             </div>
             <img class="card__art card__art--more-hr" src="../assets/images/figma/more/card-hr.webp" alt="" />
           </a>

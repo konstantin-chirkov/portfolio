@@ -42,7 +42,14 @@
 
 <main>
   <article class="case ">
-    <p class="case__lead">AdTech platform — a SaaS solution that lets companies run and manage advertising campaigns inside their own products.</p>
+    <p class="case__lead">A SaaS solution that lets companies run and manage advertising campaigns inside their own products.</p>
+
+    <ul class="tags case__tags">
+      <li>UX/UI redesign</li>
+      <li>B2B</li>
+      <li>AdTech</li>
+      <li>Web</li>
+    </ul>
 
     <dl class="case__meta">
       <div>
@@ -52,7 +59,7 @@
       <div class="case__meta-pair">
         <div>
           <dt>Year</dt>
-          <dd>2021</dd>
+          <dd>2023</dd>
         </div>
         <div>
           <dt>Reading time</dt>
@@ -73,70 +80,69 @@
     </div>
 
     <section class="case__section">
-      <h2>The problem</h2>
+      <h2>What the research showed</h2>
       <div class="case__text">
-        <p>I joined the project to rebuild the core scenario — creating an advertising campaign. Until then the development process had involved no UX designers, and clients regularly ran into trouble using the product and said so.</p>
-        <p>On top of that, the redesign had to satisfy the functional requirements of new prospects the company wanted to sign.</p>
+        <p>Before starting on the design, I ran a series of meetings with stakeholders. Together we identified the key problems, agreed on priorities and defined the success metrics.</p>
+        <p>I then ran research with marketers from 5 brands and agencies who launch and run advertising campaigns in Vevel every day, and came away with these insights:</p>
+        <p>Instead of building a campaign from scratch, marketers cloned the previous one and edited it by hand;</p>
+        <p>Before launching, many double-checked the budget separately — they were afraid of overspending by accident;</p>
+        <p>The product had no single control centre: just a list of campaigns, with no overall picture.</p>
+      </div>
+    </section>
+
+    <section class="case__section">
+      <p class="case__eyebrow">UX/UI DESIGN</p>
+      <h2>Campaign dashboard</h2>
+      <div class="case__text">
+        <p>Instead of a plain campaign list — the whole picture on one screen: KPIs for impressions, clicks, ROAS and budget, a trend chart, and spend broken down by campaign.</p>
       </div>
     </section>
 
     <figure class="shot shot--bare shot--tight">
-      <img src="../assets/images/figma/adtech/fig-01.webp" alt="The interface before the redesign" />
-      <figcaption>The interface before the redesign</figcaption>
+      <span class="shot__inset"><img src="../assets/images/figma/adtech/fig-01.webp" alt="Campaign dashboard" /></span>
     </figure>
 
     <section class="case__section">
-      <h2>Design process</h2>
+      <h2>Campaign creation wizard</h2>
       <div class="case__text">
-        <p>First I studied the product requirements and reviewed competitors to find the best practices for building advertising campaigns. From that I designed the first wizard concepts and the structure of the user flow.</p>
-        <p>Creating a campaign involved many stages and settings, so we split the process into clear steps with explicit actions and hints. Users always knew what to do next and how many steps were left.</p>
+        <p>Creating an advertising campaign involved a lot of steps and parameters, so I split the process into clear stages with explicit actions and hints. Users always knew what to do next and how many steps were left.</p>
+        <p>A catalogue of 27,931 products with search and row-by-row selection. A “show selected only” toggle keeps the focus even on a very long list.</p>
       </div>
     </section>
 
     <figure class="shot shot--bare shot--tight">
-      <img src="../assets/images/figma/adtech/fig-02.webp" alt="The page for choosing products to promote" />
-      <figcaption>The page for choosing products to promote</figcaption>
+      <span class="shot__inset"><img src="../assets/images/figma/adtech/fig-02.webp" alt="Product selection page" /></span>
+      <figcaption>Product selection page</figcaption>
+    </figure>
+
+    <section class="case__section">
+      <h2>A check before launch</h2>
+      <div class="case__text">
+        <p>The final step of the wizard became the Review &amp; Launch screen — the entire campaign summarised on one page: budget, products, audience, launch dates. The marketer sees the full picture and can catch a mistake before any money is actually spent — no screenshots, no checking against notes on paper.</p>
+      </div>
+    </section>
+
+    <figure class="shot shot--bare shot--tight">
+      <span class="shot__inset"><img src="../assets/images/figma/adtech/fig-03.webp" alt="Campaign summary page" /></span>
+      <figcaption>Campaign summary page</figcaption>
     </figure>
 
     <section class="case__section">
       <div class="case__text">
-        <p>Beyond the UX, I refreshed the product's visual language and made it feel more modern and easier to read.</p>
+        <p>After positive feedback from the client and their customers, I was asked to scale the new visual approach across the whole product.</p>
+        <p>I reviewed the rest of the system, identified the existing patterns and assembled a UI kit with the components and tokens it needed, along with written usage rules. That gave the product a single visual language and made its further development more consistent.</p>
       </div>
     </section>
 
     <figure class="shot shot--bare shot--tight">
-      <img src="../assets/images/figma/adtech/fig-03.webp" alt="The campaign summary page" />
-      <figcaption>The campaign summary page</figcaption>
-    </figure>
-
-    <section class="case__section">
-      <div class="case__text">
-        <p>From the design I built prototypes that the client used to demo the product to their own prospects. Each prototype was tailored to a specific company, following its branding and functional requirements.</p>
-      </div>
-    </section>
-
-    <figure class="shot shot--bare shot--tight">
-      <img src="../assets/images/figma/adtech/fig-04.webp" alt="The link map inside the clickable prototype" />
-      <figcaption>The link map inside the clickable prototype</figcaption>
-    </figure>
-
-    <section class="case__section">
-      <div class="case__text">
-        <p>After positive feedback from the client and their customers, I was asked to roll the new visual approach out across the whole product.</p>
-        <p>I went through the rest of the system, identified the patterns already in use and assembled a UI kit with the components, styles and usage rules the team needed. That gave the product one visual language and made further development more consistent.</p>
-      </div>
-    </section>
-
-    <figure class="shot shot--bare shot--tight">
-      <img src="../assets/images/figma/adtech/fig-05.webp" alt="The updated dashboard" />
-      <figcaption>The updated dashboard</figcaption>
+      <span class="shot__inset"><img src="../assets/images/figma/adtech/fig-04.webp" alt="Product UI kit" /></span>
     </figure>
 
     <section class="case__section">
       <h2>Outcome</h2>
       <div class="case__text">
-        <p>The work ended in a full interface overhaul, which helped the company sign several contracts with major clients such as Farfetch and Target.</p>
-        <p>Users rated the new interface highly: more than 60% said it had become easier to use. Time to complete the core flow dropped from <b>14 to 8 minutes</b>.</p>
+        <p>Our work ended in a complete interface overhaul, which in turn helped close several contracts with major clients such as Farfetch and Target.</p>
+        <p>Users rated the updated interface highly: more than 60% reported that it had become easier to use. Time to complete the core flow dropped from <b>14 to 8 minutes</b>.</p>
       </div>
     </section>
 
@@ -146,31 +152,53 @@
         <div class="case__more-scroller">
           <a class="card" href="case-amocrm.html">
             <div class="card__head">
-              <div class="card__text">
-                <p class="card__title">Kommo (formerly amoCRM)</p>
-                <p class="card__desc">How a single activation framework raised trial → subscription conversion by 4% in an enterprise CRM with 1M+ MAU</p>
+              <div class="card__body">
+                <div class="card__text">
+                  <p class="card__title">Kommo (formerly amoCRM)</p>
+                  <p class="card__desc">How a single activation framework raised trial → subscription conversion by 4% in an enterprise CRM with 1M+ MAU</p>
+                </div>
+                <ul class="tags card__tags">
+                  <li>B2B</li>
+                  <li>CRM</li>
+                  <li>Web</li>
+                  <li>Growth design</li>
+                </ul>
               </div>
-              <span class="card__go"><img src="../assets/icons/chevron-right.svg" width="20" height="20" alt="" /></span>
             </div>
             <img class="card__art card__art--more-kommo" src="../assets/images/figma/more/card-kommo.webp" alt="" />
           </a>
           <a class="card" href="case-fitness.html">
             <div class="card__head">
-              <div class="card__text">
-                <p class="card__title">Fitness app</p>
-                <p class="card__desc">Launched a fitness app for an influencer with an audience of 2M+ followers</p>
+              <div class="card__body">
+                <div class="card__text">
+                  <p class="card__title">Fitness app</p>
+                  <p class="card__desc">Launched a fitness app for an influencer with an audience of 2M+ followers</p>
+                </div>
+                <ul class="tags card__tags">
+                  <li>B2C</li>
+                  <li>Mobile</li>
+                  <li>Web</li>
+                  <li>FitTech</li>
+                </ul>
               </div>
-              <span class="card__go"><img src="../assets/icons/chevron-right.svg" width="20" height="20" alt="" /></span>
             </div>
-            <img class="card__art card__art--fitness" src="../assets/images/figma/home/card-fitness.webp" alt="" />
+            <img class="card__art card__art--more-fitness" src="../assets/images/figma/home/card-fitness.webp" alt="" />
           </a>
           <a class="card" href="case-hr.html">
             <div class="card__head">
-              <div class="card__text">
-                <p class="card__title">SaaS for HR managers and recruiters in healthcare</p>
-                <p class="card__desc">Made candidate screening 2.3× faster for a major client as the product entered the US market</p>
+              <div class="card__body">
+                <div class="card__text">
+                  <p class="card__title">SaaS for HR managers and recruiters in healthcare</p>
+                  <p class="card__desc">Made candidate screening 2.3× faster for a major client as the product entered the US market</p>
+                </div>
+                <ul class="tags card__tags">
+                  <li>B2B</li>
+                  <li>HRTech</li>
+                  <li>MedTech</li>
+                  <li>Web</li>
+                  <li>Design system</li>
+                </ul>
               </div>
-              <span class="card__go"><img src="../assets/icons/chevron-right.svg" width="20" height="20" alt="" /></span>
             </div>
             <img class="card__art card__art--more-hr" src="../assets/images/figma/more/card-hr.webp" alt="" />
           </a>
